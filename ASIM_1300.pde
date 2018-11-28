@@ -3,6 +3,9 @@ float yBranchStart = 0.0;
 float xBranchEnd = 50.0;
 float yBranchEnd = 0.0;
 
+float leftRotation = degrees(3*PI/4);
+float rightRotation = degrees(PI/4);
+
 void setup() {
 size(600,400);
 background(255,255,255); // the outside  night color
@@ -46,23 +49,23 @@ void tree() {
       for (int i = 0; i < 50; i++) { // needles point to the left    
         if (i%2==0) {
           pushMatrix();
-            rotate(3*PI/4);
+            rotate(leftRotation);
               line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
           popMatrix();
-          yBranchEnd--;
+          rotate(leftRotation--);
         }
         
         if (i%2!=0){
           // needles point to the right
           pushMatrix();
-            rotate(PI/4);
+            rotate(rightRotation);
               line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
           popMatrix();
-          yBranchEnd++;
          
           // changes apply after each pair
           xBranchEnd+=3; // branches gradually get longer towards the bottom
-          translate(0,6);          
+          translate(0,6);
+          rotate(rightRotation--);
         }
       }   
   popMatrix();
