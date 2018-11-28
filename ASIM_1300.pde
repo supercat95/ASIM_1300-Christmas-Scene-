@@ -1,35 +1,80 @@
+// variables for the snowflake
+float xSnowflakeStart = 0.0; 
+float ySnowflakeStart = 0.0;
+float xSnowflakeEnd = 1.0;
+float ySnowflakeEnd = 0.0;
+float rotate1 = degrees(3*PI/4);
+float rotate2 = degrees(PI/4);
+
+// variables for the tree
 float xBranchStart = 0.0; 
 float yBranchStart = 0.0;
 float xBranchEnd = 50.0;
 float yBranchEnd = 0.0;
+float leftRotation = 3*PI/4;
+float rightRotation = PI/4;
 
-float leftRotation = degrees(3*PI/4);
-float rightRotation = degrees(PI/4);
+
 
 void setup() {
 size(600,400);
-background(255,255,255); // the outside  night color
+background(0,0,0); // the outside  night color
 
-//wall();
-//snow();
-tree();
+//snowflake(); // add functions to randomize spawn point
+wall();
+snow();
+tree(); // add functions to slightly randomize length and angles
 }
 
 void draw() {
-  
 
+wall();
+textSize(10);
+fill(255,0,0);
+text(pmouseX, 20, 370);
+text(pmouseY, 20, 385);
 }
 
 // outside scenery
 void snow() {
   fill(#FFFFFF);
-  rect(width/3, height/3, width, 2*height/3);
+  rect(width/3-100, height/3+100, width, height/3-100);
 }
+
+void snowflake() { // code reused from a bug with the tree needles
+  pushMatrix();
+    stroke(255,255,255);
+    strokeWeight(2);
+    translate(width/3, 0);
+      for (int i = 0; i < 50; i++) {  
+        if (i%2==0) {
+          pushMatrix();
+            rotate(rotate1);
+              line(xSnowflakeStart, ySnowflakeStart, xSnowflakeEnd, ySnowflakeEnd);
+          popMatrix();
+          rotate(rotate1--);
+        }
+        
+        if (i%2!=0){
+          pushMatrix();
+            rotate(rotate2);
+              line(xSnowflakeStart, ySnowflakeStart, xSnowflakeEnd, ySnowflakeEnd);
+          popMatrix();
+         
+          // changes apply after each pair
+          xSnowflakeEnd+=0.5; // branches gradually get longer towards the bottom
+          rotate(rotate2--);
+        }
+      }   
+  popMatrix();
+}
+
 void plane() {}
 
 // inside scenery
 void wall() {
   beginShape();
+    noStroke();
     fill(#FCF9EB); // beige color
     vertex(0, 0); // top left
     vertex(width/6, 0); // top right
@@ -52,20 +97,17 @@ void tree() {
             rotate(leftRotation);
               line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
           popMatrix();
-          rotate(leftRotation--);
         }
         
-        if (i%2!=0){
-          // needles point to the right
+        if (i%2!=0) { // needles point to the right
           pushMatrix();
             rotate(rightRotation);
               line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
           popMatrix();
-         
+          
           // changes apply after each pair
           xBranchEnd+=3; // branches gradually get longer towards the bottom
           translate(0,6);
-          rotate(rightRotation--);
         }
       }   
   popMatrix();
