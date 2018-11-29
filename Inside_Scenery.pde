@@ -111,16 +111,6 @@ int blue() {
   return blue = int(random(0, 27));
 }
 
-//float[] xCenter() {
-//  for (int i = 0; i < numberOfOrnaments; i++) {
-//    xCenter[i] = random(-50.0, 50.0);
-//  }
-//}
-
-//float yCenter() {
-//  return yCenter = random(yCenter-=125.0, yCenter+=75.0);
-//}
-
 void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
   pushMatrix();
     ellipseMode(CENTER);
@@ -130,6 +120,19 @@ void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
         fill(red, green, blue);
         ellipse(xCenter[i], yCenter[i], circleWidth, circleHeight);
       }
+  popMatrix();
+}
+
+void star() {
+  pushMatrix();
+    translate(2*width/3, 50.0); // location of trees
+      fill(random(175,240), random(155,220), random(75,120)); // golden
+      noStroke();
+      triangle(0,5, 15,-15, -15,-15); 
+      pushMatrix();
+        rotate(PI);
+          triangle(0,20, 15,0, -15,0);
+      popMatrix();
   popMatrix();
 }
 // ================================================================

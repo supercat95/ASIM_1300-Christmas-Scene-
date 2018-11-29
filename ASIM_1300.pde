@@ -38,7 +38,7 @@ void setup() {
   lightTree();
   darkTree();
   
-  numberOfOrnaments = int(random(10, 20));
+  numberOfOrnaments = int(random(15, 25));
   xCenter = new float[numberOfOrnaments];
   for (int i = 0; i < numberOfOrnaments; i++) {
     xCenter[i] = random(-40.0, 40.0);
@@ -57,6 +57,7 @@ void draw() {
   blue();
   
   ornaments(red, green, blue, xCenter, yCenter);
+  star();
   
   
 //wall();
