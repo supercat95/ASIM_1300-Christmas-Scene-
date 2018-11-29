@@ -24,7 +24,8 @@ background(0,0,0); // the outside  night color
 snowflake(); // add functions to randomize spawn point
 wall();
 snow();
-tree(); // add functions to slightly randomize length and angles
+lightTree();
+darkTree(); // add functions to slightly randomize length and angles
 }
 
 void draw() {
@@ -87,12 +88,13 @@ void wall() {
   endShape();
 }
 
-void tree() {
-  pushMatrix();
-    stroke(89, 112, 44); // pine needle green
+void lightTree() { // code used from darkTree()
+   pushMatrix();
+    stroke(123, 152, 62); // light pine needle green
     strokeWeight(2);
     translate(2*width/3, 50.0);
-      for (int i = 0; i < 50; i++) { // needles point to the left    
+      for (int i = 0; i < 50; i++) { // needles point to the left   
+        yBranchEnd = random(yBranchEnd-=5.0, yBranchEnd=+5.0);
         if (i%2==0) {
           pushMatrix();
             rotate(leftRotation);
@@ -107,7 +109,7 @@ void tree() {
           popMatrix();
           
           // changes apply after each pair
-          xBranchEnd+=3; // branches gradually get longer towards the bottom
+          xBranchEnd+=3.0; // branches gradually get longer towards the bottom
           translate(0,6);
         }
       }   
@@ -118,13 +120,56 @@ void tree() {
         for (int i = 0; i < 21; i++) {
             line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
             rotate(rotation);
-            if (i < 10) { // branches lengthen from right to middle
-              xBranchEnd+=0.5;
-            }
-            if (i > 10) { // branches shortern from middle to left
-              xBranchEnd-=0.5;
-            }
-            
+              if (i < 10) { // branches lengthen from right to middle
+                xBranchEnd+= random(0.1,0.7);
+              }
+              if (i > 10) { // branches shortern from middle to left
+                xBranchEnd-= random(0.1,0.7);
+              }         
+        }
+      popMatrix();
+  popMatrix();
+}
+
+void darkTree() {
+  xBranchEnd = 50.0;
+  pushMatrix();
+    stroke(89, 112, 44); // dark pine needle green
+    strokeWeight(2);
+    translate(2*width/3, 50.0);
+      for (int i = 0; i < 50; i++) { // needles point to the left   
+        yBranchEnd = random(yBranchEnd-=5.0, yBranchEnd=+5.0);
+        if (i%2==0) {
+          pushMatrix();
+            rotate(leftRotation);
+              line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
+          popMatrix();
+        }
+        
+        if (i%2!=0) { // needles point to the right
+          pushMatrix();
+            rotate(rightRotation);
+              line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
+          popMatrix();
+          
+          // changes apply after each pair
+          xBranchEnd+=3.0; // branches gradually get longer towards the bottom
+          translate(0,6);
+        }
+      }   
+      
+      // for the curved branches at the bottom
+      pushMatrix();
+      rotate(PI/4);
+        for (int i = 0; i < 21; i++) {
+            line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
+            rotate(rotation);
+              if (i < 10) { // branches lengthen from right to middle
+                xBranchEnd+= random(0.1,0.7);
+              }
+              if (i > 10) { // branches shortern from middle to left
+                xBranchEnd-= random(0.1,0.7);
+              }         
         }
       popMatrix();
   popMatrix();
