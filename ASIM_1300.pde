@@ -13,6 +13,7 @@ float xBranchEnd = 50.0;
 float yBranchEnd = 0.0;
 float leftRotation = 3*PI/4;
 float rightRotation = PI/4;
+float rotation = PI/40;
 
 
 
@@ -20,7 +21,7 @@ void setup() {
 size(600,400);
 background(0,0,0); // the outside  night color
 
-//snowflake(); // add functions to randomize spawn point
+snowflake(); // add functions to randomize spawn point
 wall();
 snow();
 tree(); // add functions to slightly randomize length and angles
@@ -28,11 +29,11 @@ tree(); // add functions to slightly randomize length and angles
 
 void draw() {
 
-wall();
-textSize(10);
-fill(255,0,0);
-text(pmouseX, 20, 370);
-text(pmouseY, 20, 385);
+//wall();
+//textSize(10);
+//fill(255,0,0);
+//text(pmouseX, 20, 370);
+//text(pmouseY, 20, 385);
 }
 
 // outside scenery
@@ -110,6 +111,22 @@ void tree() {
           translate(0,6);
         }
       }   
+      
+      // for the curved branches at the bottom
+      pushMatrix();
+      rotate(PI/4);
+        for (int i = 0; i < 21; i++) {
+            line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
+            rotate(rotation);
+            if (i < 10) { // branches lengthen from right to middle
+              xBranchEnd+=0.5;
+            }
+            if (i > 10) { // branches shortern from middle to left
+              xBranchEnd-=0.5;
+            }
+            
+        }
+      popMatrix();
   popMatrix();
 } 
 void ornaments() {}
