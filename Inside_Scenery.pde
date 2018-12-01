@@ -1,18 +1,35 @@
-void wall() {
-  beginShape();
+void outside() {
     noStroke();
-    fill(#FCF9EB); // beige color
-    vertex(0, 0); // top left corner
-    vertex(width/6, 0); // top left
-    vertex(width/6, 2*height/3); // middle left angle
-    vertex(5*width/6, 2*height/3); // middle right angle
-    vertex(5*width/6, 0); // top right
-    vertex(width, 0); // top right corner
-    vertex(width, height); // bottom right
-    vertex(0, height); // bottom left;
-    vertex(0,0); // closes shape
-  endShape();
+    fill(0,0,0); // the outside night color
+    rect(width/6, 0, 2*width/3, 2*height/3);
 }
+
+void bricks() {
+  pushMatrix();
+    fill(#BC3102); // red orange
+    rect(0,0, width, height);
+    
+    stroke(#FCF9EB); // beige color
+    strokeWeight(5);
+    
+    for (int i = 0; i < 13; i++) { // verticle lines
+        yEnd = height;
+        xEnd = xStart;
+        line (xStart, yStart, xEnd, yEnd);
+        xStart += width/12;
+     }
+      
+     xStart = 0.0;
+     yStart = 0.0;
+     for (int i = 0; i < 13; i++) { // horizontal lines
+        yEnd = yStart;
+        xEnd = width;
+        line(xStart, yStart, xEnd, yEnd);
+        yStart += height/12;
+      }
+  popMatrix();
+}
+
 // ============================================================
 void lightTree() { // code used from darkTree()
    pushMatrix();
@@ -101,25 +118,13 @@ void darkTree() {
   popMatrix();
 } 
 // ================================================================
-int red() {
-  return red = int(random(227, 255));
-}
-
-int green() {
-  return green = int(random(0, 37));
-}
-
-int blue() {
-  return blue = int(random(0, 27));
-}
-
-void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
+void ornaments(float xCenter[], float yCenter[]) {
   pushMatrix();
     ellipseMode(CENTER);
     noStroke();
     translate(width/2, height/2); // middle of trees
       for (int i = 0; i < numberOfOrnaments; i++) {
-        fill(red, green, blue);
+        fill(240, 25, 25);
         ellipse(xCenter[i], yCenter[i], circleWidth, circleHeight);
       }
   popMatrix();
@@ -128,7 +133,7 @@ void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
 void star() {
   pushMatrix();
     translate(width/2, 50.0); // location of trees
-      fill(random(175,240), random(155,220), random(75,120)); // golden
+      fill(210,180,100); // golden
       noStroke();
       triangle(0,5, 15,-15, -15,-15); 
       pushMatrix();

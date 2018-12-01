@@ -1,8 +1,10 @@
-// variables for the snowflake
-float yTranslation = 10;
-Snowflake[] SnowflakeArray = new Snowflake[15];
+// variables for the bricks
+float xStart = 0.0;
+float yStart = 0.0;
+float xEnd = 0.0;
+float yEnd = 0.0;
 
-// variables for the tree
+// variables for the trees
 float xBranchStart = 0.0; 
 float yBranchStart = 0.0;
 float xBranchEnd = 50.0; // actual length is randomized within a range
@@ -17,18 +19,18 @@ float[] yCenter;
 float circleWidth = 12.0;
 float circleHeight = 12.0;
 int numberOfOrnaments;
-int red;
-int green;
-int blue;
 
 void setup() {
   size(600,400);
-  background(0,0,0); // the outside  night color
+  background(0,0,0);
   
   // outside scenery
-  initializeSnowflake();
-  wall();
+  bricks();
+  outside();
   snow();
+  for (int i = 0; i < 50; i++) {
+    snowflake();
+  }
   
   // inside scenery
   lightTree();
@@ -46,33 +48,14 @@ void setup() {
   
 
 }
-
+// ================================================================
 void draw() {
-  red();
-  green();
-  blue();
-  
-  ornaments(red, green, blue, xCenter, yCenter);
+  ornaments(xCenter, yCenter);
   star();
- 
-  //pushMatrix();
-  //  for (int i = 0; i < SnowflakeArray.length; i++) {
-  //    SnowflakeArray[i].snowflake(yTranslation);
-  //    yTranslation++;
-  //    println(SnowflakeArray.length);
-  //  }
-  //popMatrix();
   
 //wall();
 //textSize(10);
 //fill(255,0,0);
 //text(pmouseX, 20, 370);
 //text(pmouseY, 20, 385);
-}
-
-void initializeSnowflake() {
-  println("initalizeSnowflake is running");
-  for (int i = 0; i < SnowflakeArray.length; i++) {
-    SnowflakeArray[i] = new Snowflake();
-  }
 }
