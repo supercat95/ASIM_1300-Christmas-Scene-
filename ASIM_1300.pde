@@ -1,10 +1,6 @@
 // variables for the snowflake
-float xSnowflakeStart = 0.0; 
-float ySnowflakeStart = 0.0;
-float xSnowflakeEnd = 1.0;
-float ySnowflakeEnd = 0.0;
-float rotate1 = degrees(3*PI/4);
-float rotate2 = degrees(PI/4);
+float yTranslation = 10;
+Snowflake[] SnowflakeArray = new Snowflake[15];
 
 // variables for the tree
 float xBranchStart = 0.0; 
@@ -13,7 +9,7 @@ float xBranchEnd = 50.0; // actual length is randomized within a range
 float yBranchEnd = 0.0;
 float leftRotation = 3*PI/4;
 float rightRotation = PI/4;
-float rotation = PI/40;
+float rotation = PI/40; // actual rotation is randomized within a range
 
 // variables for the ornaments
 float[] xCenter;
@@ -30,7 +26,7 @@ void setup() {
   background(0,0,0); // the outside  night color
   
   // outside scenery
-  snowflake(); // add functions to randomize spawn point
+  initializeSnowflake();
   wall();
   snow();
   
@@ -58,11 +54,25 @@ void draw() {
   
   ornaments(red, green, blue, xCenter, yCenter);
   star();
-  
+ 
+  //pushMatrix();
+  //  for (int i = 0; i < SnowflakeArray.length; i++) {
+  //    SnowflakeArray[i].snowflake(yTranslation);
+  //    yTranslation++;
+  //    println(SnowflakeArray.length);
+  //  }
+  //popMatrix();
   
 //wall();
 //textSize(10);
 //fill(255,0,0);
 //text(pmouseX, 20, 370);
 //text(pmouseY, 20, 385);
+}
+
+void initializeSnowflake() {
+  println("initalizeSnowflake is running");
+  for (int i = 0; i < SnowflakeArray.length; i++) {
+    SnowflakeArray[i] = new Snowflake();
+  }
 }

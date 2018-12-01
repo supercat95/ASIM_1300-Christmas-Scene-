@@ -2,10 +2,12 @@ void wall() {
   beginShape();
     noStroke();
     fill(#FCF9EB); // beige color
-    vertex(0, 0); // top left
-    vertex(width/6, 0); // top right
-    vertex(width/6, 2*height/3); // middle angle
-    vertex(width, 2*height/3); // top of bottom right
+    vertex(0, 0); // top left corner
+    vertex(width/6, 0); // top left
+    vertex(width/6, 2*height/3); // middle left angle
+    vertex(5*width/6, 2*height/3); // middle right angle
+    vertex(5*width/6, 0); // top right
+    vertex(width, 0); // top right corner
     vertex(width, height); // bottom right
     vertex(0, height); // bottom left;
     vertex(0,0); // closes shape
@@ -16,7 +18,7 @@ void lightTree() { // code used from darkTree()
    pushMatrix();
     stroke(123, 152, 62); // light pine needle green
     strokeWeight(2);
-    translate(2*width/3, 50.0);
+    translate(width/2, 50.0);
       for (int i = 0; i < 50; i++) { // needles point to the left   
         yBranchEnd = random(yBranchEnd-=5.0, yBranchEnd=+5.0);
         if (i%2==0) {
@@ -43,7 +45,7 @@ void lightTree() { // code used from darkTree()
       rotate(PI/4);
         for (int i = 0; i < 21; i++) {
             line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
-            rotate(rotation);
+            rotate(random(rotation-radians(3), rotation+radians(3)));
               if (i < 10) { // branches lengthen from right to middle
                 xBranchEnd+= random(0.1,0.7);
               }
@@ -60,7 +62,7 @@ void darkTree() {
   pushMatrix();
     stroke(89, 112, 44); // dark pine needle green
     strokeWeight(2);
-    translate(2*width/3, 50.0);
+    translate(width/2, 50.0);
       for (int i = 0; i < 50; i++) { // needles point to the left   
         yBranchEnd = random(yBranchEnd-=5.0, yBranchEnd=+5.0);
         if (i%2==0) {
@@ -87,7 +89,7 @@ void darkTree() {
       rotate(PI/4);
         for (int i = 0; i < 21; i++) {
             line(xBranchStart, yBranchStart, xBranchEnd, yBranchEnd);
-            rotate(rotation);
+            rotate(random(rotation-radians(3), rotation+radians(3)));
               if (i < 10) { // branches lengthen from right to middle
                 xBranchEnd+= random(0.1,0.7);
               }
@@ -115,7 +117,7 @@ void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
   pushMatrix();
     ellipseMode(CENTER);
     noStroke();
-    translate(2*width/3, height/2); // middle of trees
+    translate(width/2, height/2); // middle of trees
       for (int i = 0; i < numberOfOrnaments; i++) {
         fill(red, green, blue);
         ellipse(xCenter[i], yCenter[i], circleWidth, circleHeight);
@@ -125,7 +127,7 @@ void ornaments(int red, int green, int blue, float xCenter[], float yCenter[]) {
 
 void star() {
   pushMatrix();
-    translate(2*width/3, 50.0); // location of trees
+    translate(width/2, 50.0); // location of trees
       fill(random(175,240), random(155,220), random(75,120)); // golden
       noStroke();
       triangle(0,5, 15,-15, -15,-15); 
@@ -137,9 +139,3 @@ void star() {
 }
 // ================================================================
 void presents() {}
-// ================================================================
-void fireplace() {}
-// ================================================================
-void fire() {}
-// ================================================================
-void stocking() {}
