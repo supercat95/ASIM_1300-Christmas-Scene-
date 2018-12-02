@@ -1,12 +1,6 @@
-void outside() {
-    noStroke();
-    fill(0,0,0); // the outside night color
-    rect(width/6, 0, 2*width/3, 2*height/3);
-}
-
 void bricks() {
   pushMatrix();
-    fill(#BC3102); // red orange
+    fill(#C42C4F); // plum-like
     rect(0,0, width, height);
     
     stroke(#FCF9EB); // beige color
@@ -117,6 +111,24 @@ void darkTree() {
       popMatrix();
   popMatrix();
 } 
+
+void trunk() {
+  pushMatrix();
+    translate(width/2, 2*height/3);
+    fill(#833C30); // brown
+    noStroke();
+    rect(-25.0,0.0, width/12,height/4);
+  popMatrix();
+}
+// ================================================================
+void rug() {
+  pushMatrix();
+    translate(width/2, 350); // center-ish of truck
+    fill(#6216DE); // purple 
+    noStroke();
+    ellipse(0,0, 150.0, 100.0);
+  popMatrix();
+}
 // ================================================================
 void ornaments(float xCenter[], float yCenter[]) {
   pushMatrix();
@@ -133,7 +145,7 @@ void ornaments(float xCenter[], float yCenter[]) {
 void star() {
   pushMatrix();
     translate(width/2, 50.0); // location of trees
-      fill(210,180,100); // golden
+      fill(#FFEA00); // golden
       noStroke();
       triangle(0,5, 15,-15, -15,-15); 
       pushMatrix();

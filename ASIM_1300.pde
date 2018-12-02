@@ -33,6 +33,8 @@ void setup() {
   }
   
   // inside scenery
+  rug();
+  trunk();
   lightTree();
   darkTree();
   
@@ -53,9 +55,9 @@ void draw() {
   ornaments(xCenter, yCenter);
   star();
   
-//wall();
+//bricks();
 //textSize(10);
-//fill(255,0,0);
+//fill(0,0,255);
 //text(pmouseX, 20, 370);
 //text(pmouseY, 20, 385);
 }
