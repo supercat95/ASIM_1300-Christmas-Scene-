@@ -115,10 +115,19 @@ void darkTree() {
 void trunk() {
   pushMatrix();
     translate(width/2, 2*height/3);
-    fill(#833C30); // brown
-    noStroke();
-    rect(-25.0,0.0, width/12,height/4);
+      fill(#833C30); // brown 
+      noStroke();
+      rect(-25.0,0.0, width/12,height/4);
   popMatrix();
+    
+  // spine
+  //pushMatrix();
+  //  translate(width/2, 50.0);
+  //  stroke(#833C30); // brown 
+  //  strokeWeight(5.0);
+  //  line(0.0,0.0, 0.0, 270.0);
+  //popMatrix();
+  
 }
 // ================================================================
 void rug() {
@@ -155,4 +164,18 @@ void star() {
   popMatrix();
 }
 // ================================================================
-void presents() {}
+void presents() {
+  //fill(#0B8298); // blue
+  pushMatrix();
+    translate(0.0,0.0);
+      fill(#90D2FA); // lighter blue
+      noStroke();
+      rect(7.5*width/12,10.0*height/12, 2.0*width/12,1.5*height/12);
+      stroke(255,255,255); 
+      strokeWeight(5);
+      // horizontal line
+      line(7.5*width/12+2.9,10.75*height/12, 9.5*width/12-3.0,10.75*height/12);
+      // vertical line
+      line(8.5*width/12+2.9,10.0*height/12-3.0, 8.5*width/12+2.9,11.5*height/12-3.0);     
+  popMatrix();
+}
