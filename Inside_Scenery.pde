@@ -191,7 +191,7 @@ void yellowPresent() {
   popMatrix();
 }
 
-void present() {
+void whitePresent() {
   pushMatrix();
     translate(410.0,293.0); // on top of blue present
       fill(255,255,255);
@@ -204,4 +204,10 @@ void present() {
       // vertical line
       line(0.625*width/12,2.8, 0.625*width/12,1.25*height/12-3.0);
   popMatrix();
+}
+// ================================================================
+void stocking() {
+  beginShape();
+  
+  endShape();
 }
