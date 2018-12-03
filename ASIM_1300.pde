@@ -21,8 +21,10 @@ float circleHeight = 12.0;
 int numberOfOrnaments;
 
 // variables for the presents
-float 
+//float 
 
+
+// variables for the snowflakes
 float xSnowflakeStart = 0.0; 
 float ySnowflakeStart = 0.0;
 float xSnowflakeEnd = 10.0;
@@ -48,7 +50,11 @@ void setup() {
   trunk();
   lightTree();
   darkTree();
-  presents();
+  ornaments(xCenter, yCenter);
+  star();
+  bluePresent();
+  yellowPresent();
+  present();
   
   numberOfOrnaments = int(random(15, 25));
   xCenter = new float[numberOfOrnaments];
@@ -64,9 +70,6 @@ void setup() {
 }
 // ================================================================
 void draw() {
-  ornaments(xCenter, yCenter);
-  star();
-  
 //bricks();
 //textSize(10);
 //fill(0,0,255);

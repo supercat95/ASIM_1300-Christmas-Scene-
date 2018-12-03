@@ -164,18 +164,44 @@ void star() {
   popMatrix();
 }
 // ================================================================
-void presents() {
-  //fill(#0B8298); // blue
+void bluePresent() {
+  fill(#90D2FA); // lighter blue
+  noStroke();
+  rect(7.5*width/12,10.0*height/12, 2.0*width/12,1.5*height/12);
+  stroke(#0B8298); // blue
+  strokeWeight(5);
+  // horizontal line
+  line(7.5*width/12+2.9,10.75*height/12, 9.5*width/12-3.0,10.75*height/12);
+  // vertical line
+  line(8.5*width/12+2.9,10.0*height/12+3.0, 8.5*width/12+2.9,11.5*height/12-3.0);     
+}
+
+void yellowPresent() {
   pushMatrix();
-    translate(0.0,0.0);
-      fill(#90D2FA); // lighter blue
+    translate(3.25*width/12,9.25*height/12); 
+      fill(234,231,027); // yellow
       noStroke();
-      rect(7.5*width/12,10.0*height/12, 2.0*width/12,1.5*height/12);
-      stroke(255,255,255); 
+      rect(0.0,0.0, 1.25*width/12,2.5*height/12);
+      stroke(#3BD609); // light green
       strokeWeight(5);
       // horizontal line
-      line(7.5*width/12+2.9,10.75*height/12, 9.5*width/12-3.0,10.75*height/12);
+      line(2.9,1.25*height/12, 1.25*width/12-3.0,1.25*height/12);
       // vertical line
-      line(8.5*width/12+2.9,10.0*height/12-3.0, 8.5*width/12+2.9,11.5*height/12-3.0);     
+      line(0.625*width/12,2.8, 0.625*width/12,2.5*height/12-3.0);     
+  popMatrix();
+}
+
+void present() {
+  pushMatrix();
+    translate(410.0,293.0); // on top of blue present
+      fill(255,255,255);
+      noStroke();
+      rect(0.0,0.0, 1.25*width/12,1.25*height/12);
+      stroke(255,0,0);
+      strokeWeight(5);
+      // horizontal line
+      line(2.9,0.625*height/12, 1.25*width/12-2.9,0.625*height/12);
+      // vertical line
+      line(0.625*width/12,2.8, 0.625*width/12,1.25*height/12-3.0);
   popMatrix();
 }
